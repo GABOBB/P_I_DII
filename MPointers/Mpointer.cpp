@@ -26,5 +26,7 @@ class Mpointer {
         m_p.R_C = new int(1);
         return m_p;
     }
-    
+
+
+
 };
