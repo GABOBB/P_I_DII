@@ -2,6 +2,7 @@
 // Created by gbb on 25/08/24.
 //
 
+#include <stdexcept>
 #include <type_traits>
 
 template <typename T>
@@ -27,6 +28,46 @@ class Mpointer {
         return m_p;
     }
 
+    T& operator*() {
+        if(!ptr) {
+            throw std::runtime_error("Mpointer::operator*(): pointer is null");
+        }
+        return *ptr;
+    }
 
+    const T& operator*() const {
+        if(!*ptr) {
+            throw std::runtime_error("Mpointer::operator*(): pointer is null");
+        }
+        return *ptr;
+    }
+
+    T* operator->() {
+        if(!ptr) {
+            throw std::runtime_error("Mpointer::operator->(): pointer is null");
+        }
+        return ptr;
+    }
+
+    const T* operator->() const {
+        if(!ptr) {
+            throw std::runtime_error("Mpointer::operator->(): pointer is null");
+        }
+        return ptr;
+    }
+
+    T operator&(){
+        if(!*ptr) {
+            throw std::runtime_error("Mpointer::operator&(): pointer is null");
+        }
+        return *ptr;
+    }
+
+    const T operator&() const {
+        if(!*ptr) {
+            throw std::runtime_error("Mpointer::operator&(): pointer is null");
+        }
+        return *ptr;
+    }
 
 };
