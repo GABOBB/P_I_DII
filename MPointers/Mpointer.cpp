@@ -70,4 +70,19 @@ class Mpointer {
         return *ptr;
     }
 
+    Mpointer<T>& operator=(const T& value) {
+        if (ptr == nullptr) {
+            ptr = new T();
+            R_C = new int(1); // Inicializar contador de referencias
+        }
+        *ptr = value;
+        return *this;
+    }
+
+    Mpointer<T>& operator=(const Mpointer<T>& other) {
+        if(this.*ptr != other.*ptr) {
+
+        }
+
+    }
 };
