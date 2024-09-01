@@ -43,7 +43,7 @@ class Mpointer {
         return *ptr;
     }
 
-    T operator&(){
+    T operator&(){//sobrecarga del operador
         if(!*ptr) {
             throw std::runtime_error("Mpointer::operator&(): pointer is null");
         }
