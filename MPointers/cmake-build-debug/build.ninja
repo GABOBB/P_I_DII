@@ -61,6 +61,24 @@ build CMakeFiles/MPointers.dir/Mpointer.cpp.o: CXX_COMPILER__MPointers_unscanned
   OBJECT_DIR = CMakeFiles/MPointers.dir
   OBJECT_FILE_DIR = CMakeFiles/MPointers.dir
 
+build CMakeFiles/MPointers.dir/MpointerGC.cpp.o: CXX_COMPILER__MPointers_unscanned_Debug /home/gbb/TEC/Datos_II/P_I_DII/MPointers/MpointerGC.cpp || cmake_object_order_depends_target_MPointers
+  DEP_FILE = CMakeFiles/MPointers.dir/MpointerGC.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/MPointers.dir
+  OBJECT_FILE_DIR = CMakeFiles/MPointers.dir
+
+build CMakeFiles/MPointers.dir/DE_List.cpp.o: CXX_COMPILER__MPointers_unscanned_Debug /home/gbb/TEC/Datos_II/P_I_DII/MPointers/DE_List.cpp || cmake_object_order_depends_target_MPointers
+  DEP_FILE = CMakeFiles/MPointers.dir/DE_List.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/MPointers.dir
+  OBJECT_FILE_DIR = CMakeFiles/MPointers.dir
+
+build CMakeFiles/MPointers.dir/DE_Node.cpp.o: CXX_COMPILER__MPointers_unscanned_Debug /home/gbb/TEC/Datos_II/P_I_DII/MPointers/DE_Node.cpp || cmake_object_order_depends_target_MPointers
+  DEP_FILE = CMakeFiles/MPointers.dir/DE_Node.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/MPointers.dir
+  OBJECT_FILE_DIR = CMakeFiles/MPointers.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target MPointers
@@ -69,7 +87,7 @@ build CMakeFiles/MPointers.dir/Mpointer.cpp.o: CXX_COMPILER__MPointers_unscanned
 #############################################
 # Link the executable MPointers
 
-build MPointers: CXX_EXECUTABLE_LINKER__MPointers_Debug CMakeFiles/MPointers.dir/main.cpp.o CMakeFiles/MPointers.dir/Mpointer.cpp.o
+build MPointers: CXX_EXECUTABLE_LINKER__MPointers_Debug CMakeFiles/MPointers.dir/main.cpp.o CMakeFiles/MPointers.dir/Mpointer.cpp.o CMakeFiles/MPointers.dir/MpointerGC.cpp.o CMakeFiles/MPointers.dir/DE_List.cpp.o CMakeFiles/MPointers.dir/DE_Node.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/MPointers.dir
   POST_BUILD = :

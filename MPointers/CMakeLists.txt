@@ -5,4 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(MPointers main.cpp
         Mpointer.cpp
-        Mpointer.h)
+        Mpointer.h
+        MpointerGC.cpp
+        MpointerGC.h
+        DE_List.cpp
+        DE_List.h
+        DE_Node.cpp
+        DE_Node.h)

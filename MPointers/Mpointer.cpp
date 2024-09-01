@@ -4,6 +4,9 @@
 
 #include <stdexcept>
 #include <type_traits>
+#include "Mpointer.h"
+#include "MpointerGC.h"
+
 
 template <typename T>
 class Mpointer {
@@ -11,7 +14,9 @@ class Mpointer {
     T* ptr;
     int* R_C; //reference count
 
-    Mpointer() : ptr(nullptr), R_C(nullptr) {}
+    Mpointer() : ptr(nullptr), R_C(nullptr) {
+        MpointerGC &GC = MpointerGC::getI();
+    }
 
     public:
     ~Mpointer() {//destructor
