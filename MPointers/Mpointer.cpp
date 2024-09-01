@@ -7,6 +7,7 @@
 
 template <typename T>
 class Mpointer {
+    int id;
     T* ptr;
     int* R_C; //reference count
 
@@ -42,20 +43,6 @@ class Mpointer {
         return *ptr;
     }
 
-    T* operator->() {
-        if(!ptr) {
-            throw std::runtime_error("Mpointer::operator->(): pointer is null");
-        }
-        return ptr;
-    }
-
-    const T* operator->() const {
-        if(!ptr) {
-            throw std::runtime_error("Mpointer::operator->(): pointer is null");
-        }
-        return ptr;
-    }
-
     T operator&(){
         if(!*ptr) {
             throw std::runtime_error("Mpointer::operator&(): pointer is null");
@@ -80,7 +67,7 @@ class Mpointer {
     }
 
     Mpointer<T>& operator=(const Mpointer<T>& other) {
-        if(this.*ptr != other.*ptr) {
+        if(this != other) {
 
         }
 
