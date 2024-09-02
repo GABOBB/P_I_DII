@@ -4,9 +4,10 @@
 
 #ifndef MPOINTERGC_H
 #define MPOINTERGC_H
-#include <any>
+
+
 #include <thread>
-#include "DE_List.h"
+#include "Mp_l.h"
 #include "Mpointer.h"
 
 
@@ -20,7 +21,7 @@ class MpointerGC {
 
     void _GC_();
     private:
-        DE_List<Mpointer<>> listado;
+        Mp_l listado;
 
     public:
         static MpointerGC& getI();
