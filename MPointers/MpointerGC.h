@@ -4,10 +4,14 @@
 
 #ifndef MPOINTERGC_H
 #define MPOINTERGC_H
+#include <any>
 #include <thread>
+#include "DE_List.h"
+#include "Mpointer.h"
 
 
 class MpointerGC {
+
     protected:
         std::thread GC;
         bool running;
@@ -15,6 +19,8 @@ class MpointerGC {
         MpointerGC(): GC(&MpointerGC::_GC_, this) {};
 
     void _GC_();
+    private:
+        DE_List<Mpointer<>> listado;
 
     public:
         static MpointerGC& getI();

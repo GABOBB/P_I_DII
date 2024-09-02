@@ -17,7 +17,7 @@ class DE_List {
         DE_List(): first(nullptr), last(nullptr), sz(0) {};
 
     ~DE_List();
-    void D_F_N();//hola 
+    void D_F_N();//hola
 
 
 };
