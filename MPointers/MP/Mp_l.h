@@ -4,6 +4,7 @@
 
 #ifndef MP_L_H
 #define MP_L_H
+
 #include <iostream>
 #include <ostream>
 
@@ -32,7 +33,7 @@ class Mp_l {
     Mp_l();
     ~Mp_l()=default;
 
-    void add_MP(int id, void* dir, DT t);
+    void add_MP(int id, void* dir);//, DT t);
     void rmv_MP(int id);
     int ref_mg(int id,bool c);
 

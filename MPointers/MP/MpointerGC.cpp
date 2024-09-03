@@ -3,7 +3,14 @@
 //
 
 #include "MpointerGC.h"
+#include <iostream>
+#include <mutex>
 
+MpointerGC& MpointerGC::getI() {
+    std::lock_guard<std::mutex> lock(mutexx);
+    static MpointerGC instance;
+    return instance;
+};
 MpointerGC::~MpointerGC() {
     running = false;
     if(GC.joinable()) {
@@ -13,14 +20,16 @@ MpointerGC::~MpointerGC() {
 
 void MpointerGC::_GC_() {
     while (running) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::lock_guard<std::mutex> lock(mutexx);
 
     }
     GC.join();
 };
 
-MpointerGC& MpointerGC::getI() {
-    static MpointerGC instance;
-    return instance;
-};
 
+int MpointerGC::add_Mp(void* dir) {
+    listado.add_MP(++id_c,dir);
+    return id_c;
+}
 

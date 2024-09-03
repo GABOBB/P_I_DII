@@ -9,14 +9,16 @@
 #include <thread>
 #include "Mp_l.h"
 #include "Mpointer.h"
-
+#include <mutex>
 
 class MpointerGC {
 
     protected:
         std::thread GC;
         bool running;
-
+        int id_c = 0;
+        static std::mutex mutexx;
+    
         MpointerGC(): GC(&MpointerGC::_GC_, this) {};
 
     void _GC_();
@@ -25,13 +27,15 @@ class MpointerGC {
 
     public:
         static MpointerGC& getI();
-
         ~MpointerGC();
+
 
         MpointerGC(const MpointerGC&) = delete;
         MpointerGC(MpointerGC&&) = delete;
         MpointerGC& operator=(const MpointerGC&) = delete;
         MpointerGC& operator=(MpointerGC&&) = delete;
+
+        int add_Mp(void* dir);
 };
 
 

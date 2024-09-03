@@ -4,8 +4,8 @@
 
 #include "Mp_l.h"
 
-void Mp_l::add_MP(int id, void *dir, DT t) {
-    Mp_n* new_N = new Mp_n(id,dir,1,nullptr,t);
+void Mp_l::add_MP(int id, void *dir){//, DT t) {
+    Mp_n* new_N = new Mp_n(id,dir,1,nullptr);//,t);
     if(frt == nullptr) {
         frt = new_N;
     }else {
