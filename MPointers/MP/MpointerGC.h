@@ -18,7 +18,7 @@ class MpointerGC {
         bool running;
         int id_c = 0;
         static std::mutex mutexx;
-    
+
         MpointerGC(): GC(&MpointerGC::_GC_, this) {};
 
     void _GC_();
@@ -27,6 +27,8 @@ class MpointerGC {
 
     public:
         static MpointerGC& getI();
+
+        int Mng_RC(int id, bool c);
         ~MpointerGC();
 
 

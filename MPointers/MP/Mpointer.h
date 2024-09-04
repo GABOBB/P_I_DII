@@ -10,22 +10,26 @@
 
 template<class T>
 class Mpointer {
+    MpointerGC GC;
     protected:
+    bool ocupated;
     int id;
-    T* ptr;
-    int* R_C;
+    T* m_ptr;
+
     Mpointer();
 
     public:
 
-    ~Mpointer();
+    ~Mpointer() = default;
     static Mpointer<T> New();
 
-    T& operator*();
-    const T& operator*() const;
+    T& operator*() {
+        return *m_ptr;
+    };
+    T operator&() {
+        return *m_ptr;
+    };
 
-    T operator&();
-    const T operator&() const;
 
     Mpointer<T>& operator=(const Mpointer<T>& other);
     Mpointer<T>& operator=(const T* other);

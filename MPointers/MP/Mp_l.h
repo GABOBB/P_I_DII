@@ -36,7 +36,7 @@ class Mp_l {
     void add_MP(int id, void* dir);//, DT t);
     void rmv_MP(int id);
     int ref_mg(int id,bool c);
-
+    Mp_n* get_frt(){return frt;}
 
 };
 
