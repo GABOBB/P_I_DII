@@ -5,19 +5,23 @@
 #include "MpointerGC.h"
 #include <iostream>
 #include <mutex>
-
-MpointerGC& MpointerGC::getI() {
-    std::lock_guard<std::mutex> lock(mutexx);
-    std::thread gc__(&_GC_ );
-    static MpointerGC instance;
-    return instance;
-};
+MpointerGC::MpointerGC() {
+    GC = std::thread(&MpointerGC::_GC_,this);
+}
 MpointerGC::~MpointerGC() {
     running = false;
     if(GC.joinable()) {
         GC.join();
     }
 };
+MpointerGC* MpointerGC::getI() {
+    std::lock_guard<std::mutex> lock(mutexx);
+    if(instance == nullptr) {
+        instance = new MpointerGC();
+    }
+    return instance;
+};
+
 
 void MpointerGC::_GC_() {
     while (running) {
@@ -51,4 +55,14 @@ int MpointerGC::Mng_RC(int id, bool c) {
     }
     return 0;
 }
+void MpointerGC::debug() {
+    std::cout << "~~~~~~~~~~~~~~~~~~MpointerGC::listado~~~~~~~~~~~~~~~~~~" << std::endl;
+    Mp_n* act = this->listado.get_frt();
+    for(int i = 0; i <= listado.get_RC();i++) {
+        std::cout << "valor #" << i <<":   "
+                  << &act <<std::endl;
+        act = act->Nxt;
+    }
+}
+
 

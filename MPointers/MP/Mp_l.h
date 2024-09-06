@@ -8,6 +8,8 @@
 #include <iostream>
 #include <ostream>
 
+//#include "Mpointer.h"
+
 enum class DT {
     INT,
     DOUBLE,
@@ -21,8 +23,9 @@ struct Mp_n {
     int R_C = 0;
     Mp_n* Nxt = nullptr;
     DT tp;
-    Mp_n(int id = 0, void* dir = nullptr, int C_dir = 0, Mp_n* next = nullptr, DT type = DT::INT):
-          id(id), dir(dir), R_C(C_dir), Nxt(next), tp(type){}
+
+    Mp_n(int id = 0, void* dir = nullptr, int R_C = 0, Mp_n* Nxt = nullptr)://, DT type = DT::INT):
+          id(id), dir(dir), R_C(R_C), Nxt(Nxt){}//, tp(tp){}
 };
 class Mp_l {
     private:
@@ -33,10 +36,12 @@ class Mp_l {
     Mp_l();
     ~Mp_l()=default;
 
+
     void add_MP(int id, void* dir);//, DT t);
     void rmv_MP(int id);
     int ref_mg(int id,bool c);
     Mp_n* get_frt(){return frt;}
+    int get_RC(){return sz;}
 
 };
 

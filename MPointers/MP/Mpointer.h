@@ -7,11 +7,13 @@
 #include <stdexcept>
 #include <type_traits>
 #include "MpointerGC.h"
-
+using namespace std;
 template<class T>
 class Mpointer {
-    MpointerGC GC;
-    protected:
+
+    MpointerGC* GC = MpointerGC::getI();
+
+private:
     bool ocupated;
     int id;
     T* m_ptr;

@@ -12,32 +12,39 @@
 #include <mutex>
 
 class MpointerGC {
+private:
+    static MpointerGC* instance;
+    Mp_l listado;
+    static std::mutex mutexx;
+    std::thread GC;
+    bool running;
+    int id_c = 0;
 
-    protected:
-        std::thread GC;
-        bool running;
-        int id_c = 0;
-        static std::mutex mutexx;
 
-        MpointerGC(): GC(&MpointerGC::_GC_, this) {};
+    MpointerGC();
 
     void _GC_();
-    private:
-        Mp_l listado;
 
-    public:
-        static MpointerGC& getI();
+
+
+public:
+    static MpointerGC* getI();
+
+    int add() {
+        return 2;
+    }
 
         int Mng_RC(int id, bool c);
         ~MpointerGC();
 
 
-        MpointerGC(const MpointerGC&) = delete;
-        MpointerGC(MpointerGC&&) = delete;
-        MpointerGC& operator=(const MpointerGC&) = delete;
-        MpointerGC& operator=(MpointerGC&&) = delete;
+        //MpointerGC(const MpointerGC&) = delete;
+        //MpointerGC(MpointerGC&&) = delete;
+        //MpointerGC& operator=(const MpointerGC&) = delete;
+        //MpointerGC& operator=(MpointerGC&&) = delete;
 
         int add_Mp(void* dir);
+        void debug();
 };
 
 
