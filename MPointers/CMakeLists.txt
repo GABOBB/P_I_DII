@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.28)
 project(MPointers)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(MPointers main.cpp
-        MP/Mpointer.cpp
         MP/Mpointer.h
         MP/MpointerGC.cpp
         MP/MpointerGC.h

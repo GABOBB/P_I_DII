@@ -5,6 +5,10 @@
 #include "MpointerGC.h"
 #include <iostream>
 #include <mutex>
+
+MpointerGC* MpointerGC::instance = nullptr;
+std::mutex MpointerGC::mutexx;
+
 MpointerGC::MpointerGC() {
     GC = std::thread(&MpointerGC::_GC_,this);
 }
@@ -16,10 +20,10 @@ MpointerGC::~MpointerGC() {
 };
 MpointerGC* MpointerGC::getI() {
     std::lock_guard<std::mutex> lock(mutexx);
-    if(instance == nullptr) {
-        instance = new MpointerGC();
+    if(MpointerGC::instance == nullptr) {
+        MpointerGC::instance = new MpointerGC();
     }
-    return instance;
+    return MpointerGC::instance;
 };
 
 

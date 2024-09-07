@@ -5,11 +5,6 @@
 #ifndef MP_L_H
 #define MP_L_H
 
-#include <iostream>
-#include <ostream>
-
-//#include "Mpointer.h"
-
 enum class DT {
     INT,
     DOUBLE,
@@ -33,7 +28,7 @@ class Mp_l {
     int sz = 0;
 
     public:
-    Mp_l();
+    Mp_l()=default;
     ~Mp_l()=default;
 
 
@@ -44,7 +39,5 @@ class Mp_l {
     int get_RC(){return sz;}
 
 };
-
-
 
 #endif //MP_L_H
