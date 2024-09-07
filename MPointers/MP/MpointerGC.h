@@ -8,6 +8,7 @@
 
 #include <thread>
 #include "Mp_l.h"
+
 #include "Mpointer.h"
 #include <mutex>
 
@@ -48,5 +49,5 @@ public:
 };
 
 
-
+//#include "MpointerGC.cpp"
 #endif //MPOINTERGC_H

@@ -7,8 +7,9 @@
 #include "Mpointer.h"
 #include "MpointerGC.h"
 
+
 template<class T>
-Mpointer<T>::Mpointer() : GC(), ocupated(false), m_ptr(nullptr){
+Mpointer<T>::Mpointer() : GC(MpointerGC::getI()), ocupated(false), m_ptr(nullptr){
 };
 
 
@@ -26,7 +27,7 @@ Mpointer<T>& Mpointer<T>::operator=(const Mpointer<T>& otr_ptr) {
 
 
 template<class T>
-Mpointer<T>& Mpointer<T>::operator=(const T* other) {
+Mpointer<T>& Mpointer<T>::operator=(T* other) {
     if(this->m_ptr != other) {
         ocupated = true;
         if(m_ptr) {
@@ -35,6 +36,8 @@ Mpointer<T>& Mpointer<T>::operator=(const T* other) {
                     delete m_ptr; m_ptr=nullptr;
                 }
         }
+        this->m_ptr=other;
     }
+    return *this;
 }
 
