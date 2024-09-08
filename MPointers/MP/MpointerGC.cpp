@@ -41,7 +41,7 @@ void MpointerGC::_GC_() {
             act = act->Nxt;
         }
     }
-    GC.join();
+
 };
 
 

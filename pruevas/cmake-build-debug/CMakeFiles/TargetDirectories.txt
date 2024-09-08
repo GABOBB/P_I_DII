@@ -1,3 +1,0 @@
-/home/gbb/TEC/Datos_II/P_I_DII/pruevas/cmake-build-debug/CMakeFiles/pruevas.dir
-/home/gbb/TEC/Datos_II/P_I_DII/pruevas/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/gbb/TEC/Datos_II/P_I_DII/pruevas/cmake-build-debug/CMakeFiles/rebuild_cache.dir

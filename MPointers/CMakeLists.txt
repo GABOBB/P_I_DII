@@ -13,3 +13,6 @@ add_executable(MPointers main.cpp
         test/DE_Node.h
         MP/Mp_l.cpp
         MP/Mp_l.h)
+
+# Enlaza con pthread
+target_link_libraries(MPointers PRIVATE pthread)
