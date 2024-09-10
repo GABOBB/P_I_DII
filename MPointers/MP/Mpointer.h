@@ -6,54 +6,63 @@
 
 #include "MpointerGC.h"
 
-using namespace std;
+//using namespace std;
 
 template<typename T>
 class Mpointer {
-    MpointerGC *GC;
-
 private:
-    bool ocupated;
+    MpointerGC *GC;
+    //bool ocupated;
     int id;
     T *m_ptr;
 
-    Mpointer() : GC(MpointerGC::getI()), ocupated(false), m_ptr(nullptr){
+    Mpointer() : id(0),GC(MpointerGC::getI()), m_ptr(nullptr){
+    std::cout << "Mpointer constructor" << std::endl;
     };
 
 public:
     ~Mpointer() = default;
 
     static Mpointer<T> New() {
-        return Mpointer<T>();
+        std::cout << "Mpointer<T>::New()" << std::endl;
+        //GC.
+        Mpointer<T> MP;
+        return MP;
     }
 
-    T &operator*() {
+    T& operator*() {
+        if(m_ptr==nullptr) {
+            delete m_ptr;
+            m_ptr = new T();
+        }
         return *m_ptr;
     };
 
-    Mpointer<T>& operator=(T other) {
-        if(this->m_ptr != other) {
-            ocupated = true;
-            if(m_ptr) {
-                int c = GC->Mng_RC(id,false);
-                if(c>0) {
-                    delete m_ptr; m_ptr=nullptr;
-                }
-            }
-            this->m_ptr=other;
+    Mpointer<T>& operator=(const T& value) {
+        if(m_ptr != nullptr && *m_ptr != value) {
+            GC->Mng_RC( id, false);
+            *m_ptr = value;
+            return *this;
         }
-        return *this;
+
     }
 
-    Mpointer<T>& operator=(const Mpointer<T>& otr_ptr) {
-        if(&otr_ptr != this) {
-            this.m_ptr = otr_ptr.m_ptr;
-            GC->Mng_RC(otr_ptr.id,true);
-            ocupated = true;
+    Mpointer<T>& operator=(T* ptr) {
+        if(*m_ptr != ptr && m_ptr != nullptr) {
 
         }
-        return *this;
-    }
+
+  }
+
+    //Mpointer<T>& operator=(const Mpointer<T>& otr_ptr) {
+    //    if(&otr_ptr != this) {
+    //        this.m_ptr = otr_ptr.m_ptr;
+    //        GC->Mng_RC(otr_ptr.id,true);
+    //        ocupated = true;
+    //
+    //    }
+    //    return *this;
+    //}
 };
 
 #endif //MPOINTER_H
