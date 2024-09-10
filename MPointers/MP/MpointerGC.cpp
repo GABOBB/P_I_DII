@@ -35,7 +35,7 @@ void MpointerGC::_GC_() {
         Mp_n* act = this->listado.get_frt();
         while (act != nullptr) {
             if(act->R_C < 1) {
-                listado.rmv_MP(act->id);
+                listado.remove_MP(act->id);
 
             }
             act = act->Nxt;
@@ -47,10 +47,11 @@ void MpointerGC::_GC_() {
 
 int MpointerGC::add_Mp(void* dir) {
     listado.add_MP(++id_c,dir);
+    //this->debug();
     return id_c;
 }
 
-int MpointerGC::Mng_RC(int id, bool c) {
+int MpointerGC::RefCount_Manager(int id, bool c) {
     Mp_n* act = this->listado.get_frt();
     while (act != nullptr) {
         if(act->id == id) {
@@ -60,13 +61,9 @@ int MpointerGC::Mng_RC(int id, bool c) {
     return 0;
 }
 void MpointerGC::debug() {
-    std::cout << "~~~~~~~~~~~~~~~~~~MpointerGC::listado~~~~~~~~~~~~~~~~~~" << std::endl;
-    Mp_n* act = this->listado.get_frt();
-    for(int i = 0; i <= listado.get_RC();i++) {
-        std::cout << "valor #" << i <<":   "
-                  << &act <<std::endl;
-        act = act->Nxt;
-    }
+    std::cout << "~~~~~~~~~~~~~~~~~~MpointerGC::listado::inicio~~~~~~~~~~~~~~~~~~" << std::endl;
+    listado.debug();
+    std::cout << "~~~~~~~~~~~~~~~~~~MpointerGC::listado::final~~~~~~~~~~~~~~~~~~" << std::endl;
 }
 
 

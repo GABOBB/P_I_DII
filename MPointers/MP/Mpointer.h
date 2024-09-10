@@ -18,6 +18,8 @@ private:
 
     Mpointer() : id(0),GC(MpointerGC::getI()), m_ptr(nullptr){
     std::cout << "Mpointer constructor" << std::endl;
+        id = GC->add_Mp(this);
+        std::cout << "Mpointer add id :" << id << std::endl;
     };
 
 public:
@@ -30,6 +32,8 @@ public:
         return MP;
     }
 
+
+
     T& operator*() {
         if(m_ptr==nullptr) {
             delete m_ptr;
@@ -40,7 +44,7 @@ public:
 
     Mpointer<T>& operator=(const T& value) {
         if(m_ptr != nullptr && *m_ptr != value) {
-            GC->Mng_RC( id, false);
+            GC->RefCount_Manager( id, false);
             *m_ptr = value;
             return *this;
         }

@@ -3,14 +3,18 @@
 //
 
 #include "Mp_l.h"
+#include <iostream>
 
-void Mp_l::add_MP(int id, void* dir){//, DT t) {
-    Mp_n* new_N = new Mp_n(id, dir,1,nullptr);//,t);
+#include "Mpointer.h"
+
+void Mp_l::add_MP(int id, void* dir){
+    Mp_n* new_N = new Mp_n(id, dir,1,nullptr);
+    std::cout<<"Mp_l::add_MP"<<id<<std::endl;
     if(frt == nullptr) {
         frt = new_N;
     }else {
         Mp_n* act = frt;
-        for(int i =0;i < sz;i++) {
+        for(int i =0;i < sz-1;i++) {
             act = act->Nxt;
         }
         act->Nxt = new_N;
@@ -18,7 +22,7 @@ void Mp_l::add_MP(int id, void* dir){//, DT t) {
     sz++;
 }
 
-void Mp_l::rmv_MP(int id) {
+void Mp_l::remove_MP(int id) {
     Mp_n* act = frt;
     Mp_n* pst = nullptr;
 
@@ -52,4 +56,19 @@ int Mp_l::ref_mg(int id, bool c) {
 
     }
     return 0;
+}
+
+void Mp_l::debug() {
+
+    Mp_n* act = this->frt;
+    std::cout<<"sz:" <<this->sz<<std::endl;
+    for(int i = 0; i < sz;i++) {
+        Mpointer<int>* mmp = static_cast<Mpointer<int>*>(act->mp_dir);
+        std::cout << "valor #" << i <<":   "
+                  << **(mmp)  <<std::endl;
+        if(act->Nxt != nullptr) {
+            act = act->Nxt;
+        }
+
+    }
 }

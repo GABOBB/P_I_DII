@@ -27,11 +27,7 @@ private:
 public:
     static MpointerGC *getI();
 
-    int add() {
-        return 2;
-    }
-
-    int Mng_RC(int id, bool c);
+    int RefCount_Manager(int id, bool c);
 
     ~MpointerGC();
 
