@@ -9,7 +9,7 @@
 
 void Mp_l::add_MP(int id, void* dir){
     Mp_n* new_N = new Mp_n(id, dir,1,nullptr);
-    std::cout<<"Mp_l::add_MP"<<id<<std::endl;
+    std::cout<<"Mp_l::add_MP"<<id<<"::";
     if(frt == nullptr) {
         frt = new_N;
     }else {

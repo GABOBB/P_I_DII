@@ -47,7 +47,6 @@ void MpointerGC::_GC_() {
 
 int MpointerGC::add_Mp(void* dir) {
     listado.add_MP(++id_c,dir);
-    //this->debug();
     return id_c;
 }
 

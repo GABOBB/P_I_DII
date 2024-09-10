@@ -12,22 +12,17 @@ template<typename T>
 class Mpointer {
 private:
     MpointerGC *GC;
-    //bool ocupated;
     int id;
     T *m_ptr;
 
     Mpointer() : id(0),GC(MpointerGC::getI()), m_ptr(nullptr){
-    std::cout << "Mpointer constructor" << std::endl;
         id = GC->add_Mp(this);
-        std::cout << "Mpointer add id :" << id << std::endl;
     };
 
 public:
     ~Mpointer() = default;
 
     static Mpointer<T> New() {
-        std::cout << "Mpointer<T>::New()" << std::endl;
-        //GC.
         Mpointer<T> MP;
         return MP;
     }
