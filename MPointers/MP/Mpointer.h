@@ -5,7 +5,7 @@
 #define MPOINTER_H
 
 #include "MpointerGC.h"
-
+#include <iostream>
 //using namespace std;
 
 template<typename T>
@@ -41,15 +41,21 @@ public:
         if(m_ptr != nullptr && *m_ptr != value) {
             GC->RefCount_Manager( id, false);
             *m_ptr = value;
-            return *this;
-        }
 
+        }
+        return *this;
     }
 
-    Mpointer<T>& operator=(T* ptr) {
-        if(*m_ptr != ptr && m_ptr != nullptr) {
+    Mpointer<T>& operator=(const Mpointer<T> mptr) {
+
+        if(this->m_ptr != mptr.m_ptr) {
+            delete this->m_ptr;
+            this->m_ptr = mptr.m_ptr;
+            GC->RefCount_Manager(id,false);
+            GC->RefCount_Manager(mptr.id,true);
 
         }
+        return *this;
 
   }
 

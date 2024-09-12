@@ -6,18 +6,23 @@
 int main() {
     std::cout << "Hello World!" << std::endl;
     Mpointer<int> mp1 = Mpointer<int>::New();
-    *mp1 = 66655;
-    std::cout << *mp1 << std::endl;
-    Mpointer<int> mp2 = Mpointer<int>::New();
-    *mp2 = 6665;
-    std::cout << *mp2 << std::endl;
-    Mpointer<int> mp3 = Mpointer<int>::New();
-    *mp3 = 666;
-    std::cout << *mp3 << std::endl;
-    //MpointerGC::getI()->debug();
-
-    mp3 = mp2;
-    std::cout << *mp3 << std::endl;
+    *mp1 = 1;
     MpointerGC::getI()->debug();
+    Mpointer<int> mp2 = Mpointer<int>::New();
+    *mp2 = 2;
+    MpointerGC::getI()->debug();
+    Mpointer<int> mp3 = Mpointer<int>::New();
+    mp3 = mp2;
+    MpointerGC::getI()->debug();
+    Mpointer<int> mp4 = Mpointer<int>::New();
+    mp4 = mp2;
+    MpointerGC::getI()->debug();
+    //*mp3 = 3;
+    *mp4 = 5;
+    MpointerGC::getI()->debug();
+    *mp3 = 35;
+    MpointerGC::getI()->debug();
+    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    std::cout << "M1 "<< *mp1 <<", M2 "<< *mp2 <<", M3 "<< *mp3 <<", M4 "<< *mp4<< std::endl;
     return 0;
 };

@@ -64,11 +64,12 @@ void Mp_l::debug() {
     std::cout<<"sz:" <<this->sz<<std::endl;
     for(int i = 0; i < sz;i++) {
         Mpointer<int>* mmp = static_cast<Mpointer<int>*>(act->mp_dir);
-        std::cout << "valor #" << i <<":   "
-                  << **(mmp)  <<std::endl;
-        if(act->Nxt != nullptr) {
-            act = act->Nxt;
+        if(mmp != nullptr) {
+            std::cout << "valor #" << i <<":   "
+                    << **(mmp)  <<std::endl;
+            if(act->Nxt != nullptr) {
+                act = act->Nxt;
+            }
         }
-
     }
 }
