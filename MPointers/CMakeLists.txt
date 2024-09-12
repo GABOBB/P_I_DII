@@ -7,10 +7,10 @@ add_executable(MPointers main.cpp
         MP/Mpointer.h
         MP/MpointerGC.cpp
         MP/MpointerGC.h
-        test/DE_List.cpp
-        test/DE_List.h
-        test/DE_Node.cpp
-        test/DE_Node.h
+        test/DoubleEndedList.cpp
+        test/DoubleEndedList.h
+        test/DoubleEndedNode.cpp
+        test/DoubleEndedNode.h
         MP/Mp_l.cpp
         MP/Mp_l.h)
 

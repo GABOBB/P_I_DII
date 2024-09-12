@@ -2,9 +2,15 @@
 
 #include "MP/Mpointer.h"
 #include "MP/MpointerGC.h"
-
+#include "test/DoubleEndedList.h"
 int main() {
-    std::cout << "Hello World!" << std::endl;
+    //DoubleEndedList<int> Lista;
+    //Lista.addNodoFirst(5);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    MpointerGC::getI()->debug();
+
+    ///*
     Mpointer<int> mp1 = Mpointer<int>::New();
     *mp1 = 1;
     MpointerGC::getI()->debug();
@@ -24,5 +30,6 @@ int main() {
     MpointerGC::getI()->debug();
     std::this_thread::sleep_for(std::chrono::milliseconds(1500));
     std::cout << "M1 "<< *mp1 <<", M2 "<< *mp2 <<", M3 "<< *mp3 <<", M4 "<< *mp4<< std::endl;
-    return 0;
+    return 0;//*/
 };
+
