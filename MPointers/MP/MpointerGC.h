@@ -37,7 +37,7 @@ public:
     //MpointerGC& operator=(MpointerGC&&) = delete;
 
     int add_Mp(void *dir);
-    void debug();
+    void debug(bool c);
 };
 
 #endif //MPOINTERGC_H

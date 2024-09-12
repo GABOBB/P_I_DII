@@ -9,12 +9,12 @@
 template<class T>
 class DoubleEndedList {
     private:
-    DoubleEndedNode<T> *first;
-    DoubleEndedNode<T> *last;
+    Mpointer<DoubleEndedNode<T>> first = Mpointer<DoubleEndedNode<T>>::New();
+    Mpointer<DoubleEndedNode<T>> last = Mpointer<DoubleEndedNode<T>>::New();
     int size;
 
     public:
-        DoubleEndedList(): first(nullptr), last(nullptr), size(0) {};
+        DoubleEndedList(): size(0) {};
 
         ~DoubleEndedList()=default;
         void DeleteFirstNode() {
@@ -26,13 +26,15 @@ class DoubleEndedList {
             size--;
         };
         void addNodoFirst(T value) {
-            DoubleEndedNode<T>* newNodo = new DoubleEndedNode<T>(value);
+            Mpointer<DoubleEndedNode<T>> newNodo = Mpointer<DoubleEndedNode<T>>::New();
+            newNodo = new DoubleEndedNode<T>(value);
+            std::cout <<newNodo.m_ptr->getValue() << std::endl;
             if(size==0) {
                 first = newNodo;
                 last = newNodo;
             }else {
-                newNodo->setNext(first);
-                first->setPrevious(newNodo);
+                newNodo.m_ptr->setNext(first);
+                first.m_ptr->setPrevious(newNodo);
                 first = newNodo;
             }
             size++;
@@ -44,14 +46,15 @@ class DoubleEndedList {
             bool sorted;
             do {
                 sorted = false;
-                DoubleEndedNode<T>* act = first;
-                while(act->getNext()) {
-                    if(act->getValue() < act->getNext()->getValue()) {
-                        T temp = act->getValue();
-                        act->setValue(act->getNext()->getValue());
-                        act->getNext()->setValue(temp);
+                Mpointer<DoubleEndedNode<T>> act = first;
+                while(act.m_ptr->getNext().m_ptr) {
+                    if(act.m_ptr->getValue() < (act.m_ptr->getNext()).m_ptr->getValue()) {
+                        T temp = act.m_ptr->getValue();
+                        act.m_ptr->setValue((act.m_ptr->getNext()).m_ptr->getValue());
+                        ((act.m_ptr)->getNext()).m_ptr->setValue(temp);
                         sorted = true;
                     }
+                    act = act.m_ptr->getNext();
                 }
             }while (sorted);
         };
@@ -78,10 +81,11 @@ class DoubleEndedList {
         void QuickSort();
 
         void Print() {
-            DoubleEndedNode<T>* act = first;
+            Mpointer<DoubleEndedNode<T>> act = first;
+            std::cout << size << std::endl;
             for(int i = 1; i <= size; i++) {
-                std::cout << "elemento #"<<i<<": "<<act->getValue()<<std::endl;
-                act = act->getNext();
+                std::cout << "elemento #"<<i<<": "<<act.m_ptr->getValue()<<std::endl;
+                act = act.m_ptr->getNext();
             }
         };
 };

@@ -10,19 +10,31 @@ template<class T>
 class DoubleEndedNode {
     private:
         T Value;
-        DoubleEndedNode<T>* next;
-        DoubleEndedNode<T>* previous;
+        Mpointer<DoubleEndedNode> next;
+        Mpointer<DoubleEndedNode> previous;
     public:
 
-    DoubleEndedNode(T V):Value(V),next(nullptr),previous(nullptr) {};
+    DoubleEndedNode(T V):Value(V),next(Mpointer<DoubleEndedNode<T>>::New()),previous(Mpointer<DoubleEndedNode<T>>::New()) {};
 
-    void setValue(T V);
-    void setNext(DoubleEndedNode<T>* N);
-    void setPrevious(DoubleEndedNode<T>* P);
+    void setValue(T V) {
+        Value = V;
+    };
+    void setNext(Mpointer<DoubleEndedNode> N) {
+        next = N;
+    };
+    void setPrevious(Mpointer<DoubleEndedNode> P) {
+        previous = P;
+    };
 
-    T getValue();
-    DoubleEndedNode<T>* getNext();
-    DoubleEndedNode<T>* getPrevious();
+    T getValue() {
+        return Value;
+    };
+    Mpointer<DoubleEndedNode> getNext() {
+        return next;
+    };
+    Mpointer<DoubleEndedNode> getPrevious() {
+        return previous;
+    };
 };
 
 

@@ -63,9 +63,9 @@ int MpointerGC::RefCount_Manager(int id, bool c) {
     }
     return 0;
 }
-void MpointerGC::debug() {
-    std::cout << "~~~~~~~~~~~~~~~~~~MpointerGC::listado::inicio~~~~~~~~~~~~~~~~~~" << std::endl;
-    listado.debug();
+void MpointerGC::debug(bool c) {
+    std::cout << "\n~~~~~~~~~~~~~~~~~~MpointerGC::listado::inicio~~~~~~~~~~~~~~~~~~" << std::endl;
+    listado.debug(c);
     std::cout << "~~~~~~~~~~~~~~~~~~MpointerGC::listado::final~~~~~~~~~~~~~~~~~~" << std::endl;
 }
 

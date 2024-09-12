@@ -32,7 +32,7 @@ public:
     Mp_n* get_frt(){return frt;}
     int get_RC(){return sz;}
 
-    void debug();
+    void debug(bool c);
 
 };
 

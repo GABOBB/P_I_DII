@@ -6,10 +6,11 @@
 #include <iostream>
 
 #include "Mpointer.h"
+#include "../test/DoubleEndedNode.h"
 
 void Mp_l::add_MP(int id, void* dir){
     Mp_n* new_N = new Mp_n(id, dir,1,nullptr);
-    std::cout<<"Mp_l::add_MP"<<id<<"::";
+    //std::cout<<"Mp_l::add_MP"<<id<<"::";
     if(frt == nullptr) {
         frt = new_N;
     }else {
@@ -58,17 +59,31 @@ int Mp_l::ref_mg(int id, bool c) {
     return 0;
 }
 
-void Mp_l::debug() {
-
-    Mp_n* act = this->frt;
-    std::cout<<"sz:" <<this->sz<<std::endl;
-    for(int i = 0; i < sz;i++) {
-        Mpointer<int>* mmp = static_cast<Mpointer<int>*>(act->mp_dir);
-        if(mmp != nullptr) {
-            std::cout << "valor #" << i <<":   "
-                    << **(mmp)  <<std::endl;//<<"\n reference count:  "<< act->R_C
-            if(act->Nxt != nullptr) {
-                act = act->Nxt;
+void Mp_l::debug(bool c) {
+    if(c) {
+        Mp_n* act = this->frt;
+        std::cout<<"sz:" <<this->sz<<std::endl;
+        for(int i = 0; i < sz;i++) {
+            Mpointer<DoubleEndedNode<int>>* mmp = static_cast<Mpointer<DoubleEndedNode<int>>*>(act->mp_dir);
+            if(mmp != nullptr) {
+                std::cout << "valor #" << i <<":   "
+                        << mmp->m_ptr->getValue()  <<std::endl;//<<"\n reference count:  "<< act->R_C
+                if(act->Nxt != nullptr) {
+                    act = act->Nxt;
+                }
+            }
+        }
+    }else {
+        Mp_n* act = this->frt;
+        std::cout<<"sz:" <<this->sz<<std::endl;
+        for(int i = 0; i < sz;i++) {
+            Mpointer<int>* mmp = static_cast<Mpointer<int>*>(act->mp_dir);
+            if(mmp != nullptr) {
+                std::cout << "valor #" << i <<":   "
+                        << mmp->id  <<std::endl;//<<"\n reference count:  "<< act->R_C
+                if(act->Nxt != nullptr) {
+                    act = act->Nxt;
+                }
             }
         }
     }

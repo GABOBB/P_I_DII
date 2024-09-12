@@ -10,7 +10,7 @@
 
 template<typename T>
 class Mpointer {
-private:
+public:
     MpointerGC *GC;
     int id;
     T *m_ptr;
@@ -19,7 +19,8 @@ private:
         id = GC->add_Mp(this);
     };
 
-public:
+
+
     ~Mpointer() = default;
 
     static Mpointer<T> New() {
@@ -56,18 +57,27 @@ public:
 
         }
         return *this;
+    }
 
-  }
+    Mpointer<T>& operator=(T* prt) {
+        if(m_ptr != prt) {
+            if(m_ptr) {
+                GC->RefCount_Manager(id,false);
+            }
+            m_ptr = prt;
+        }
+        return *this;
 
-    //Mpointer<T>& operator=(const Mpointer<T>& otr_ptr) {
-    //    if(&otr_ptr != this) {
-    //        this.m_ptr = otr_ptr.m_ptr;
-    //        GC->Mng_RC(otr_ptr.id,true);
-    //        ocupated = true;
-    //
-    //    }
-    //    return *this;
-    //}
+    }
+
+    template<typename U>
+    Mpointer<T>& operator=(const U& value) {
+        if(this->m_ptr != nullptr) {
+            GC->RefCount_Manager(id,false);
+        }
+        return *this;
+    }
+
 };
 
 #endif //MPOINTER_H
