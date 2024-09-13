@@ -2,19 +2,19 @@
 // Created by gbb on 02/09/24.
 //
 
-#include "Mp_l.h"
+#include "Mp_list.h"
 #include <iostream>
 
 #include "Mpointer.h"
 #include "../test/DoubleEndedNode.h"
 
-void Mp_l::add_MP(int id, void* dir){
-    Mp_n* new_N = new Mp_n(id, dir,1,nullptr);
+void Mp_list::add_MP(int id, void* dir){
+    Mp_nodo* new_N = new Mp_nodo(id, dir,1,nullptr);
     //std::cout<<"Mp_l::add_MP"<<id<<"::";
     if(frt == nullptr) {
         frt = new_N;
     }else {
-        Mp_n* act = frt;
+        Mp_nodo* act = frt;
         for(int i =0;i < sz-1;i++) {
             act = act->Nxt;
         }
@@ -23,9 +23,9 @@ void Mp_l::add_MP(int id, void* dir){
     sz++;
 }
 
-void Mp_l::remove_MP(int id) {
-    Mp_n* act = frt;
-    Mp_n* pst = nullptr;
+void Mp_list::remove_MP(int id) {
+    Mp_nodo* act = frt;
+    Mp_nodo* pst = nullptr;
 
     while(act != nullptr && act->id != id) {
         pst = act;
@@ -43,8 +43,8 @@ void Mp_l::remove_MP(int id) {
     delete act;
 }
 
-int Mp_l::ref_mg(int id, bool c) {
-    Mp_n* act = frt;
+int Mp_list::ref_mg(int id, bool c) {
+    Mp_nodo* act = frt;
     for(int i =0;i < sz;i++) {
         if(act->id == id) {
             if(c) {
@@ -59,9 +59,9 @@ int Mp_l::ref_mg(int id, bool c) {
     return 0;
 }
 
-void Mp_l::debug(bool c) {
+void Mp_list::debug(bool c) {
     if(c) {
-        Mp_n* act = this->frt;
+        Mp_nodo* act = this->frt;
         std::cout<<"sz:" <<this->sz<<std::endl;
         for(int i = 0; i < sz;i++) {
             Mpointer<DoubleEndedNode<int>>* mmp = static_cast<Mpointer<DoubleEndedNode<int>>*>(act->mp_dir);
@@ -74,7 +74,7 @@ void Mp_l::debug(bool c) {
             }
         }
     }else {
-        Mp_n* act = this->frt;
+        Mp_nodo* act = this->frt;
         std::cout<<"sz:" <<this->sz<<std::endl;
         for(int i = 0; i < sz;i++) {
             Mpointer<int>* mmp = static_cast<Mpointer<int>*>(act->mp_dir);

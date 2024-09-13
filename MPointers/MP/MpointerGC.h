@@ -5,7 +5,7 @@
 #define MPOINTERGC_H
 
 #include <thread>
-#include "Mp_l.h"
+#include "Mp_list.h"
 
 #include <mutex>
 
@@ -13,7 +13,7 @@ class MpointerGC {
 
 private:
     static MpointerGC *instance;
-    Mp_l listado;
+    Mp_list listado;
     static std::mutex mutexx;
     std::thread GC;
     bool running;

@@ -33,7 +33,7 @@ void MpointerGC::_GC_() {
         std::lock_guard<std::mutex> lock(mutexx);
         std::cout << MpointerGC::instance << " is running." << std::endl;
 
-        Mp_n* act = this->listado.get_frt();
+        Mp_nodo* act = this->listado.get_frt();
         while (act != nullptr) {
             std::cout <<act->R_C << std::endl;
             if(act->R_C < 1) {
@@ -53,7 +53,7 @@ int MpointerGC::add_Mp(void* dir) {
 }
 
 int MpointerGC::RefCount_Manager(int id, bool c) {
-    Mp_n* act = this->listado.get_frt();
+    Mp_nodo* act = this->listado.get_frt();
     while (act != nullptr) {
         //std::cout << "si llega"<<std::endl;
         if(act->id == id) {

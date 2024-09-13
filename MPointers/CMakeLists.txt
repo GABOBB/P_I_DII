@@ -11,8 +11,8 @@ add_executable(MPointers main.cpp
         test/DoubleEndedList.h
         test/DoubleEndedNode.cpp
         test/DoubleEndedNode.h
-        MP/Mp_l.cpp
-        MP/Mp_l.h)
+        MP/Mp_list.cpp
+        MP/Mp_list.h)
 
 # Enlaza con pthread
 target_link_libraries(MPointers PRIVATE pthread)
