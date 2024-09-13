@@ -47,13 +47,14 @@ public:
         return *this;
     }
 
-    Mpointer<T>& operator=(const Mpointer<T> mptr) {
+    Mpointer<T>& operator=(const Mpointer<T> Mptr) {
 
-        if(this->m_ptr != mptr.m_ptr) {
-            delete this->m_ptr;
-            this->m_ptr = mptr.m_ptr;
+        if(this->m_ptr != Mptr.m_ptr) {
             GC->RefCount_Manager(id,false);
-            GC->RefCount_Manager(mptr.id,true);
+            GC->RefCount_Manager(Mptr.id,true);
+
+            this->m_ptr = Mptr.m_ptr;
+
 
         }
         return *this;

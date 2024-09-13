@@ -80,7 +80,7 @@ void Mp_l::debug(bool c) {
             Mpointer<int>* mmp = static_cast<Mpointer<int>*>(act->mp_dir);
             if(mmp != nullptr) {
                 std::cout << "valor #" << i <<":   "
-                        << mmp->id  <<std::endl;//<<"\n reference count:  "<< act->R_C
+                        << mmp->m_ptr  <<std::endl;//<<"\n reference count:  "<< act->R_C
                 if(act->Nxt != nullptr) {
                     act = act->Nxt;
                 }

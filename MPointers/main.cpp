@@ -9,15 +9,15 @@ int main() {
     Lista.addNodoFirst(5);
     Lista.addNodoFirst(101);
     Lista.addNodoFirst(15);
-    //Lista.addNodoFirst(201);
+    Lista.addNodoFirst(201);
     Lista.Print();
     Lista.BubbleSort();
-    //
+    Lista.Print();
 
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1500));
     MpointerGC::getI()->debug(false);
-    Lista.Print();
+
     /*
     Mpointer<int> mp1 = Mpointer<int>::New();
     *mp1 = 1;
